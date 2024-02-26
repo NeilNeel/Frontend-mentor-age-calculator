@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 62.5%;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: hsl(0, 0%, 86%);
+  font-size: 16rem;
+}
+
+.container {
+  background-color: #ffff;
+  min-width: 70rem;
+  border-radius: 2.5rem 2.5rem 20rem 2.5rem;
+  padding: 6rem 5rem 0;
+}
+
+.inputs {
+  display: flex;
+  gap: 2rem;
+}
+
+.input--container input {
+  width: 8.64rem;
+  font-size: 3.2rem;
+  border-radius: 1rem;
+  border: 0.1rem solid hsl(0, 0%, 86%);
+  padding: 1rem 2.6rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.input--container input:focus {
+  border-color: hsl(259, 100%, 65%);
+  outline: none;
+}
+
+.day--in input::before {
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  /* appearance: none; */
+}
