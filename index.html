@@ -24,25 +24,25 @@
 
     <title>Frontend Mentor | Age calculator app</title>
   </head>
-  <body>
+  <body class="flex--center flex">
     <main class="container">
       <section>
-        <form class="inputs">
+        <form class="inputs flex">
           <div class="input--container">
             <input type="number" class="day--in" placeholder="DD" />
-            <div class="invalid--day"></div>
+            <div class="invalid invalid--day"><p>This field required</p></div>
           </div>
           <div class="input--container">
             <input type="number" class="month--in" placeholder="MM" />
-            <div class="invalid--month"></div>
+            <div class="invalid invalid--month"><p>This field required</p></div>
           </div>
           <div class="input--container">
             <input type="number" class="year--in" placeholder="YYYY" />
-            <div class="invalid--year"></div>
+            <div class="invalid invalid--year"><p>This field required</p></div>
           </div>
         </form>
-        <div class="btn">
-          <button>
+        <div class="btn--container flex">
+          <button class="btn flex flex--center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="46"
@@ -57,18 +57,15 @@
             </svg>
           </button>
         </div>
-        <div class="output">
-          <div>
-            <span>--</span>
-            <p>years</p>
+        <div class="output--container">
+          <div class="flex f--center--left year--out output">
+            <p>--</p>
           </div>
-          <div>
-            <span>--</span>
-            <p>months</p>
+          <div class="flex f--center--left month--out output">
+            <p>--</p>
           </div>
-          <div>
-            <span>--</span>
-            <p>days</p>
+          <div class="flex f--center--left day--out output">
+            <p>--</p>
           </div>
         </div>
       </section>

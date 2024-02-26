@@ -6,23 +6,41 @@
 }
 
 body {
+  background-color: hsl(0, 0%, 86%);
+  height: 100vh;
+}
+
+section {
+  padding: 6rem 5rem 0;
+}
+
+.flex {
   display: flex;
+}
+
+.flex--center {
   justify-content: center;
   align-items: center;
-  background-color: hsl(0, 0%, 86%);
-  font-size: 16rem;
+}
+
+.f--center--left {
+  align-items: center;
 }
 
 .container {
   background-color: #ffff;
   min-width: 70rem;
   border-radius: 2.5rem 2.5rem 20rem 2.5rem;
-  padding: 6rem 5rem 0;
 }
 
 .inputs {
-  display: flex;
   gap: 2rem;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  /* appearance: none; */
 }
 
 .input--container input {
@@ -36,16 +54,120 @@ body {
   transition: 0.3s ease;
 }
 
+.input--container {
+  position: relative;
+}
+
 .input--container input:focus {
   border-color: hsl(259, 100%, 65%);
   outline: none;
 }
 
-.day--in input::before {
+.input--container::before {
+  position: absolute;
+  font-size: 1.2rem;
+  color: hsl(0, 1%, 44%);
+  top: -20px;
+  left: 0;
+  font-weight: 700;
+  letter-spacing: 2.5px;
 }
 
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  /* appearance: none; */
+.input--container:nth-child(1):before {
+  content: "DAY";
 }
+
+.input--container:nth-child(2)::before {
+  content: "MONTH";
+}
+
+.input--container:nth-child(3)::before {
+  content: "YEAR";
+}
+
+.btn--container {
+  position: relative;
+  justify-content: flex-end;
+}
+
+.btn--container::before {
+  content: "";
+  position: absolute;
+  height: 0.1rem;
+  background-color: hsl(0, 0%, 86%);
+  width: 100%;
+  top: 50%;
+  left: 0;
+}
+
+.btn {
+  padding: 15px;
+  border-radius: 50%;
+  background-color: hsl(259, 100%, 65%);
+  border: none;
+  transition: all 0.3s;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.btn:hover {
+  background-color: hsl(0, 0%, 8%);
+}
+
+.output--container {
+  font-weight: 800;
+  margin-bottom: 3rem;
+}
+
+.output--container div p {
+  color: hsl(259, 100%, 65%);
+  justify-content: center;
+  align-items: center;
+}
+
+.output {
+  height: 8rem;
+}
+
+.output,
+.output p {
+  font-size: 7rem;
+  font-style: italic;
+}
+
+.output::after {
+  color: hsl(0, 0%, 8%);
+}
+
+.output:nth-child(1)::after {
+  content: "years";
+}
+
+.output:nth-child(2)::after {
+  content: "months";
+}
+
+.output:nth-child(3)::after {
+  content: "days";
+}
+
+.invalid p {
+  visibility: hidden;
+}
+
+/* invalid css */
+/* .invalid p {
+  color: hsl(0, 100%, 67%);
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+}
+
+.invalid--input {
+  border-color: hsl(0, 100%, 67%);
+}
+
+.input--container::before {
+  color: hsl(0, 100%, 67%);
+} */
+
+/* ************ */
