@@ -22,6 +22,9 @@
     <!-- css -->
     <link rel="stylesheet" href="./css/style.css" />
 
+    <!-- js -->
+    <script src="./main.js" defer></script>
+
     <title>Frontend Mentor | Age calculator app</title>
   </head>
   <body class="flex--center flex">
@@ -29,16 +32,33 @@
       <section>
         <form class="inputs flex">
           <div class="input--container">
-            <input type="number" class="day--in" placeholder="DD" />
-            <div class="invalid invalid--day"><p>This field required</p></div>
+            <input
+              type="number"
+              autofocus
+              class="day--in"
+              placeholder="DD"
+              pattern="\d{2}"
+              name="day"
+            />
+            <div><p class="invalid invalid--day">This field required</p></div>
           </div>
           <div class="input--container">
-            <input type="number" class="month--in" placeholder="MM" />
-            <div class="invalid invalid--month"><p>This field required</p></div>
+            <input
+              type="number"
+              class="month--in"
+              placeholder="MM"
+              name="month"
+            />
+            <div><p class="invalid invalid--month">This field required</p></div>
           </div>
           <div class="input--container">
-            <input type="number" class="year--in" placeholder="YYYY" />
-            <div class="invalid invalid--year"><p>This field required</p></div>
+            <input
+              type="number"
+              class="year--in"
+              placeholder="YYYY"
+              name="year"
+            />
+            <div><p class="invalid invalid--year">This field required</p></div>
           </div>
         </form>
         <div class="btn--container flex">
@@ -58,14 +78,14 @@
           </button>
         </div>
         <div class="output--container">
-          <div class="flex f--center--left year--out output">
-            <p>--</p>
+          <div class="flex f--center--left output">
+            <p class="year--out">--</p>
           </div>
-          <div class="flex f--center--left month--out output">
-            <p>--</p>
+          <div class="flex f--center--left output">
+            <p class="month--out">--</p>
           </div>
-          <div class="flex f--center--left day--out output">
-            <p>--</p>
+          <div class="flex f--center--left output">
+            <p class="day--out">--</p>
           </div>
         </div>
       </section>

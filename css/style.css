@@ -135,6 +135,10 @@ input[type="number"]::-webkit-outer-spin-button {
   font-style: italic;
 }
 
+.output p {
+  margin-right: 1rem;
+}
+
 .output::after {
   color: hsl(0, 0%, 8%);
 }
@@ -151,23 +155,24 @@ input[type="number"]::-webkit-outer-spin-button {
   content: "days";
 }
 
-.invalid p {
+.invalid {
   visibility: hidden;
-}
-
-/* invalid css */
-/* .invalid p {
   color: hsl(0, 100%, 67%);
   font-size: 1.2rem;
   margin-top: 0.5rem;
 }
 
-.invalid--input {
-  border-color: hsl(0, 100%, 67%);
+/* invalid css */
+.invalid.invalid--active {
+  visibility: visible;
 }
 
-.input--container::before {
+.invalid--input {
+  border: 0.1rem solid hsl(0, 100%, 67%) !important;
+}
+
+.input--container.empty--input::before {
   color: hsl(0, 100%, 67%);
-} */
+}
 
 /* ************ */
