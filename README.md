@@ -25,7 +25,7 @@ Users should be able to:
 
 ### Screenshot
 
-![](./design/ss%20for%20github.webp.jpg)
+![](./design/ss%20for%20github.webp)
 
 ### Links
 
