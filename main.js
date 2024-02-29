@@ -1,6 +1,6 @@
 "use strict";
-// container
-const inputContainerEl = document.querySelectorAll(".input--container");
+// input container
+const inputContainer = document.querySelectorAll(".input--container");
 // input elements
 const inputDayEl = document.querySelector(".day--in");
 const inputMonthEl = document.querySelector(".month--in");
@@ -18,35 +18,120 @@ const currMonth = currentDate.getMonth() + 1;
 const currYear = currentDate.getFullYear();
 // invalid
 const invalidEl = document.querySelectorAll(".invalid");
+const errorMessage = {
+  empty: "This field required",
+  valid: "Cannot be a negative number",
+  valid_day: "Must be a valid day",
+  valid_month: "Must be a valid month",
+  valid_year: "Must be a valid year",
+  past_day: "Can't be in the future",
+};
+let flag = 1;
 
 btnEnter.addEventListener("click", function (e) {
-  const inputDay = inputDayEl.value;
-  const inputMonth = inputMonthEl.value;
-  const inputYear = inputYearEl.value;
+  const day = inputDayEl.value;
+  const month = inputMonthEl.value;
+  const year = inputYearEl.value;
 
-  if (inputDay === "" || inputMonth === "" || inputYear === "") {
-    emptyInput();
-  }
-  calAge(inputDay, inputMonth, inputYear);
-});
-inputContainerEl.forEach((e) => console.log(e));
+  // checking if the user has not selected a future day
 
-function emptyInput() {
-  console.log("fuck you");
-  invalidEl.forEach((element, index) => {
-    element.classList.add("invalid--active");
+  inputContainer.forEach(function (e) {
+    const inputEl = e.querySelector("input");
+    const value = inputEl.value;
+    if (
+      Number(year) === Number(currYear) &&
+      Number(month) > Number(currMonth)
+    ) {
+      displayError(inputEl, "add", "past_day");
+      flag = 0;
+    } else if (value === "" || value === null || value === 0) {
+      displayError(inputEl, "add", "empty");
+      flag = 0;
+    } else if (value < 0) {
+      displayError(inputEl, "add", "valid");
+      flag = 0;
+    } else if (inputEl.classList.contains("day--in")) {
+      if (value > 31) {
+        displayError(inputEl, "add", "valid_day");
+        flag = 0;
+        console.log(value);
+      } else {
+        displayError(inputEl, "remove");
+        flag = 1;
+      }
+    } else if (inputEl.classList.contains("month--in")) {
+      if (value > 12) {
+        displayError(inputEl, "add", "valid_month");
+        flag = 0;
+      } else {
+        displayError(inputEl, "remove");
+        flag = 1;
+      }
+    } else if (inputEl.classList.contains("year--in")) {
+      if (Number(value.toString().length) !== 4) {
+        displayError(inputEl, "add", "valid_year");
+        flag = 0;
+      } else {
+        displayError(inputEl, "remove");
+        flag = 1;
+      }
+    } else {
+      displayError(inputEl, "remove");
+      flag = 1;
+      console.log("else ");
+    }
   });
-  inputDayEl.classList.add("invalid--input");
-  inputMonthEl.classList.add("invalid--input");
-  inputYearEl.classList.add("invalid--input");
-  const pseudoStyle = `
-  .input--container::before{
-    color: hsl(0, 100%, 67%);
+
+  if (flag === 1) calAge(day, month, year);
+});
+
+inputContainer.forEach((e) => console.log(e));
+
+function verifyInput(container, inputEl) {
+  if (inputEl.classList.contains("day--in")) {
+    const d = Number(inputEl.value);
+    if (d > 31) {
+      displayError(inputEl, "add", "valid_day");
+      flag = 0;
+    }
+  } else if (inputEl.classList.contains("month--in")) {
+    const m = Number(inputEl.value);
+    if (m > 12) {
+      displayError(inputEl, "add", "valid_month");
+      flag = 0;
+      console.log(flag);
+    }
+  } else if (inputEl.classList.contains("year--in")) {
+    const y = Number(inputEl.value.toString().length);
+    if (y !== 4) {
+      displayError(inputEl, "add", "valid_year");
+      flag = 0;
+    }
+  } else if (d <= 31 && m <= 12 && y === 4) {
+    flag = 1;
+    console.clear(flag);
   }
-  `;
-  inputContainerEl.forEach((e) => e.classList.add("empty--input"));
 }
 
+function displayError(e, classState, msg) {
+  const containerEl = e.closest(".input--container");
+  const invalidMessageEl = containerEl.querySelector(".invalid");
+
+  if (classState === "add") {
+    invalidMessageEl.textContent = `${errorMessage[msg]}`;
+    invalidMessageEl.classList.add("invalid--message");
+    e.classList.add("invalid--input");
+    containerEl.classList.add("invalid--container");
+  } else if (classState === "remove") {
+    invalidMessageEl.classList.remove("invalid--message");
+    e.classList.remove("invalid--input");
+    containerEl.classList.remove("invalid--container");
+  }
+}
+
+// *******************************
+// CALCULATING AGE
+// *******************************
 function calAge(birthDay, birthMonth, birthYear) {
   let day = currDay - birthDay;
   let month = currMonth - birthMonth;
@@ -67,6 +152,9 @@ function calAge(birthDay, birthMonth, birthYear) {
   displayAge(year, month, day);
 }
 
+// *******************************
+// DISPLAYING AGE
+// *******************************
 function displayAge(year, month, day) {
   outputDayEl.textContent = day;
   outputMonthEl.textContent = month;
