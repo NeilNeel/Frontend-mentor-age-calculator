@@ -33,24 +33,29 @@ btnEnter.addEventListener("click", function (e) {
   const month = inputMonthEl.value;
   const year = inputYearEl.value;
 
-  // checking if the user has not selected a future day
-
   inputContainer.forEach(function (e) {
     const inputEl = e.querySelector("input");
     const value = inputEl.value;
+    // checking if the user has not selected a future day
     if (
       Number(year) === Number(currYear) &&
       Number(month) > Number(currMonth)
     ) {
       displayError(inputEl, "add", "past_day");
       flag = 0;
-    } else if (value === "" || value === null || value === 0) {
+    }
+    // checking for empty input
+    else if (value === "" || value === null || value === 0) {
       displayError(inputEl, "add", "empty");
       flag = 0;
-    } else if (value < 0) {
+    }
+    // checking for negative input
+    else if (value < 0) {
       displayError(inputEl, "add", "valid");
       flag = 0;
-    } else if (inputEl.classList.contains("day--in")) {
+    }
+    // if the day is valid
+    else if (inputEl.classList.contains("day--in")) {
       if (value > 31) {
         displayError(inputEl, "add", "valid_day");
         flag = 0;
@@ -59,7 +64,9 @@ btnEnter.addEventListener("click", function (e) {
         displayError(inputEl, "remove");
         flag = 1;
       }
-    } else if (inputEl.classList.contains("month--in")) {
+    }
+    // valid month
+    else if (inputEl.classList.contains("month--in")) {
       if (value > 12) {
         displayError(inputEl, "add", "valid_month");
         flag = 0;
@@ -67,7 +74,9 @@ btnEnter.addEventListener("click", function (e) {
         displayError(inputEl, "remove");
         flag = 1;
       }
-    } else if (inputEl.classList.contains("year--in")) {
+    }
+    // valid year
+    else if (inputEl.classList.contains("year--in")) {
       if (Number(value.toString().length) !== 4) {
         displayError(inputEl, "add", "valid_year");
         flag = 0;
@@ -85,8 +94,9 @@ btnEnter.addEventListener("click", function (e) {
   if (flag === 1) calAge(day, month, year);
 });
 
-inputContainer.forEach((e) => console.log(e));
-
+// *******************************
+// DISPLAYING ERROR Messages
+// *******************************
 function displayError(e, classState, msg) {
   const containerEl = e.closest(".input--container");
   const invalidMessageEl = containerEl.querySelector(".invalid");
