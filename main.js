@@ -87,32 +87,6 @@ btnEnter.addEventListener("click", function (e) {
 
 inputContainer.forEach((e) => console.log(e));
 
-function verifyInput(container, inputEl) {
-  if (inputEl.classList.contains("day--in")) {
-    const d = Number(inputEl.value);
-    if (d > 31) {
-      displayError(inputEl, "add", "valid_day");
-      flag = 0;
-    }
-  } else if (inputEl.classList.contains("month--in")) {
-    const m = Number(inputEl.value);
-    if (m > 12) {
-      displayError(inputEl, "add", "valid_month");
-      flag = 0;
-      console.log(flag);
-    }
-  } else if (inputEl.classList.contains("year--in")) {
-    const y = Number(inputEl.value.toString().length);
-    if (y !== 4) {
-      displayError(inputEl, "add", "valid_year");
-      flag = 0;
-    }
-  } else if (d <= 31 && m <= 12 && y === 4) {
-    flag = 1;
-    console.clear(flag);
-  }
-}
-
 function displayError(e, classState, msg) {
   const containerEl = e.closest(".input--container");
   const invalidMessageEl = containerEl.querySelector(".invalid");
