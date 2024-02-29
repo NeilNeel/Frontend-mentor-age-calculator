@@ -1,0 +1,59 @@
+@media (min-width: 1000px) {
+  .container {
+    min-width: 70rem;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin: 5rem 8rem;
+    max-width: 90%;
+    border-radius: 2.5rem 2.5rem 12rem 2.5rem;
+  }
+
+  .output,
+  .output p {
+    font-size: 6rem;
+  }
+
+  .btn--container {
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  section {
+    padding: 4rem 2.5rem 0;
+  }
+
+  .input--container input {
+    width: 4.3rem;
+    font-size: 1.6rem;
+    padding: 0.8rem 2.2rem;
+  }
+
+  .output,
+  .output p {
+    font-size: 5rem;
+  }
+
+  .btn {
+    padding: 1rem;
+  }
+
+  .btn--container {
+    justify-content: center;
+  }
+
+  .invalid {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 425px) {
+  .output,
+  .output p {
+    font-size: 4rem;
+  }
+}

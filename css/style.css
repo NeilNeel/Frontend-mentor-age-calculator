@@ -7,7 +7,7 @@
 
 body {
   background-color: hsl(0, 0%, 86%);
-  height: 100vh;
+  min-height: 100vh;
 }
 
 section {
@@ -29,8 +29,10 @@ section {
 
 .container {
   background-color: #ffff;
-  min-width: 70rem;
+  /* min-width: 70rem; */
+  max-width: 84rem;
   border-radius: 2.5rem 2.5rem 20rem 2.5rem;
+  margin: 1rem 5rem;
 }
 
 .inputs {
@@ -44,7 +46,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .input--container input {
-  width: 8.64rem;
+  max-width: 8.64rem;
   font-size: 3.2rem;
   border-radius: 1rem;
   border: 0.1rem solid hsl(0, 0%, 86%);
@@ -101,7 +103,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .btn {
-  padding: 15px;
+  padding: 1.5rem;
   border-radius: 50%;
   background-color: hsl(259, 100%, 65%);
   border: none;
@@ -174,16 +176,3 @@ input[type="number"]::-webkit-outer-spin-button {
 .input--container.invalid--container::before {
   color: hsl(0, 100%, 67%);
 }
-
-/* ************ */
-/* 
-invalidEl.forEach((e) => e.classList.add("invalid--active"));
-  inputDayEl.classList.add("invalid--input");
-  inputMonthEl.classList.add("invalid--input");
-  inputYearEl.classList.add("invalid--input");
-  inputContainerEl.forEach((e) => e.classList.add("empty--input"));
-
-  //   ---------
-  const containerEl = inputDayEl.closest(".input--container");
-  console.log(containerEl);
-*/
